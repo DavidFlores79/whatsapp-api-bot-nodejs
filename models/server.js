@@ -10,6 +10,23 @@ class Server {
     this.app = express();
     this.port = process.env.PORT || 5000;
 
+    const http = require('http').createServer(this.app);
+    const io = require('socket.io')(http);
+
+    //sockets
+    io.on('connection', (socket) => {
+      console.log('Socket connected!');
+
+      socket.on('disconnected', () => {
+        console.log('Socket disconnected!');
+      });
+    });
+
+    http.listen(this.port, () => {
+      console.log(`Listen on port ${this.port}`);
+    });
+
+
     //conectar a DB
     this.conectarDB();
 
@@ -52,13 +69,16 @@ class Server {
   }
 
   routes() {
+    this.app.use("/api/v1/incoming_messages", async(req, res) => {
+      console.log('Webhook', req.body);
+    });
     this.app.use("/api/v1", wttpRoutes);
   }
 
   listen() {
-    this.app.listen(this.port, () => {
-      console.log(`API lista en el puerto ${this.port}`);
-    });
+    // this.app.listen(this.port, () => {
+    //   console.log(`API lista en el puerto ${this.port}`);
+    // });
   }
 }
 
