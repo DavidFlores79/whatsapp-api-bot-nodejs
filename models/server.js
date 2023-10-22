@@ -34,7 +34,11 @@ class Server {
     this.middlewares();
 
     this.app.post('/api/v1/incoming_messages', async function (req, res) {
-      console.log('Webhook', req.body);
+      // console.log('Webhook', req.body);
+      io.on('connection', (socket) => {
+        console.log('Socket connected!!!');
+        io.emit('incoming_messages', req.body);
+      });
     });
 
     //rutas de mi aplicacion

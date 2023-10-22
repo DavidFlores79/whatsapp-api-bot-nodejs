@@ -46,7 +46,7 @@ const sendMessage = async (req, res) => {
 
     const body = req.body;
     
-    console.log({dataRaw: body});
+    // console.log({dataRaw: body});
 
     const response = await fetch(`${MESSAGE_BIRD_URI}/send`, {
         method: 'POST',
