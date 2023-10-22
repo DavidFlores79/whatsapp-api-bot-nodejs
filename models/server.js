@@ -33,6 +33,10 @@ class Server {
     //middlewares
     this.middlewares();
 
+    this.app.post('/api/v1/incoming_messages', async function (req, res) {
+      console.log('Webhook', req.body);
+    });
+
     //rutas de mi aplicacion
     this.routes();
   }
@@ -69,9 +73,6 @@ class Server {
   }
 
   routes() {
-    this.app.post("/api/v1/incoming_messages", async(req, res) => {
-      console.log('Webhook', req.body);
-    });
     this.app.use("/api/v1", wttpRoutes);
   }
 

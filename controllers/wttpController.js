@@ -93,10 +93,18 @@ const getResource = async (req, res) => {
 
 }
 
+// const incommingMessages = async (req, res) => {
+
+//     console.log(req.body);
+    
+
+// }
+
 module.exports = {
     getConversations,
     getMessages,
     sendMessage,
     uploadFile,
     getResource,
+    // incommingMessages,
 }
