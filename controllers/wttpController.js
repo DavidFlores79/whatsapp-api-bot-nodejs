@@ -68,7 +68,7 @@ const uploadFile = async (req, res) => {
     const img_name = img_path.split('\\')[1];
     const url=`http://127.0.0.1:${process.env.PORT ?? 5000}/api/v1/get_resource/${img_name}`;
 
-    console.log({img_name});
+    console.log({files});
 
     res.status(200).send({data:url});
 }
@@ -76,7 +76,7 @@ const uploadFile = async (req, res) => {
 const getResource = async (req, res) => {
 
     const name = req.params['name'];
-    console.log({name});
+    // console.log({name});
     fs.stat(`./uploads/${name}`, (err) => {
         if(err) {
             let path_img = './uploads/default.png';
