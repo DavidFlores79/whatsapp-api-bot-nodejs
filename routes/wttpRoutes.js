@@ -9,5 +9,6 @@ api.get('/conversations/:id/messages', wtppController.getMessages);
 api.post('/send', wtppController.sendMessage);
 api.post('/upload_file', path, wtppController.uploadFile);
 api.get('/get_resource/:name', path, wtppController.getResource);
+api.post('/incoming_messages', wtppController.incommingMessages);
 
 module.exports = api;

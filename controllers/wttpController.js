@@ -65,9 +65,11 @@ const uploadFile = async (req, res) => {
 
     const files = req.files;
     const img_path = files.file.path;
-    // const img_name = img_path.split('\\')[1];
-    const img_name = img_path.split('/')[1];
     const url=`https://whatsapp-api-bot-nodejs-production.up.railway.app/api/v1/get_resource/${img_name}`;
+    const img_name = img_path.split('/')[1];
+    // const img_name = img_path.split('\\')[1];
+    // const url=`http://127.0.0.1:${process.env.PORT ?? 5000}/api/v1/get_resource/${img_name}`;
+
 
     console.log({files});
 
@@ -91,21 +93,17 @@ const getResource = async (req, res) => {
 
 }
 
+const incommingMessages = async (req, res) => {
+
+    console.log(req.body);
+
+}
+
 module.exports = {
     getConversations,
     getMessages,
     sendMessage,
     uploadFile,
     getResource,
+    incommingMessages,
 }
-
-
-// messagebird.conversations.list(20, 0, function (err, response) {
-//     if (err) {
-//       return console.log(err);
-//     }
-    
-//     res.send({
-//         data: response
-//     })
-//   });
