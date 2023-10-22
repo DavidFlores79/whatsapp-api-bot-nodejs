@@ -69,7 +69,7 @@ class Server {
   }
 
   routes() {
-    this.app.use("/api/v1/incoming_messages", async(req, res) => {
+    this.app.post("/api/v1/incoming_messages", async(req, res) => {
       console.log('Webhook', req.body);
     });
     this.app.use("/api/v1", wttpRoutes);
