@@ -65,7 +65,8 @@ const uploadFile = async (req, res) => {
 
     const files = req.files;
     const img_path = files.file.path;
-    const img_name = img_path.split('\\')[1];
+    // const img_name = img_path.split('\\')[1];
+    const img_name = img_path.split('/')[1];
     const url=`https://whatsapp-api-bot-nodejs-production.up.railway.app/api/v1/get_resource/${img_name}`;
 
     console.log({files});
